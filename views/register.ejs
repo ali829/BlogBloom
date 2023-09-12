@@ -1,0 +1,14 @@
+<%- include('./partials/header.ejs') %>
+<h1>Register</h1>
+<form
+  action="/register"
+  method="post"
+  enctype="application/x-www-form-urlencoded"
+>
+  <input type="text" name="username" id="" />
+  <input type="email" name="email" id="" />
+  <input type="password" name="password" id="" />
+  <input type="file" name="profileImg" />
+  <button type="submit">create user</button>
+</form>
+<%- include('./partials/footer.ejs') %>
