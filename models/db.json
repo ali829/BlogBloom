@@ -3,24 +3,17 @@
   "users": [
     {
       "username": "dadadad@gmail.com",
-      "email": "dadadad@gmail.com",
-      "password": "dadadad@gmail.com",
-      "profileImg": "Screenshot (1).png",
-      "id": 1
+      "email": "sasasa@gmail.com",
+      "password": "$2a$10$CLbZ3iKqv91BzS.lBNv9l.a440ng0D21v5hzD7qiy6TV3bNhsWf5W",
+      "profileImg": "1694558986066-206817966-Screenshot (6).png",
+      "id": "3ee58337-46e9-462e-9df9-53cd3945f52e"
     },
     {
       "username": "dadadad@gmail.com",
-      "email": "ali@gmail.com",
-      "password": "$2a$10$lByYv0xN9ht3zkSQYO7L4u1HJZmbXXQsXE9v3KstWBZmRYgTpxBOK",
-      "profileImg": "",
-      "id": "ce011f90-f229-4798-8c84-e02eaa0de702"
-    },
-    {
-      "username": "dadadad@gmail.com",
-      "email": "ali@gmail.com",
-      "password": "$2a$10$z2ZuyMHFWvmU5ezjQPx6DOthwnB9.Ay2G5ntxnouAcEH6wxFCL6v.",
-      "profileImg": "Screenshot (5).png",
-      "id": "5d0579ff-0732-4894-a342-58945abef9e3"
+      "email": "",
+      "password": "$2a$10$hQ2fjYkqgWumnE9q6JE2cu4fHgRa/n6CtX8Oj0nHdQ4i9L/QsGMa2",
+      "profileImg": "1694560246580-188851979-Screenshot (6).png",
+      "id": "eccdfa68-31b1-47d7-82f1-bed22ad55dcc"
     }
   ]
 }

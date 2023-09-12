@@ -1,4 +1,10 @@
 const { Router } = require("express");
+const { upload } = require("../middlewares/media.middleware");
+const {
+  emailValidator,
+  pwdValidator,
+  usernameValidator,
+} = require("../middlewares/validator.middleware");
 const router = Router();
 const {
   getLogin,
@@ -9,7 +15,16 @@ const {
 
 router.get("/register", getRegister);
 router.get("/login", getLogin);
-router.post("/register", createUser);
+router.post(
+  "/register",
+  [
+    upload.single("profileImg"),
+    emailValidator(),
+    pwdValidator(),
+    usernameValidator(),
+  ],
+  createUser
+);
 router.post("/login", authUser);
 
 module.exports = router;

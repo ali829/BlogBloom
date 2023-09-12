@@ -1,8 +1,10 @@
-const authApi = require("../api/auth.api.js");
-const api = new authApi();
-const bcrypt = require("bcrypt");
-const { v4: uuidV4 } = require("uuid");
-
+const { addUser, getAllUsers } = require("../services/auth.service");
+const {
+  checkUsernameNotInUse,
+  profileImgValidator,
+  validationResult,
+} = require("../middlewares/validator.middleware");
+const { json } = require("express");
 const saltRound = 10;
 
 exports.getRegister = (req, res) => {
@@ -13,17 +15,19 @@ exports.getLogin = (req, res) => {
 };
 exports.createUser = async (req, res) => {
   const { username, email, password, profileImg } = req.body;
-  const genSalt = bcrypt.genSaltSync(saltRound, "a");
-  const hash = bcrypt.hashSync(password, genSalt);
-  const response = await api.addUser({
-    username,
-    email,
-    password: hash,
-    profileImg,
-    id: uuidV4(),
-  });
-  const newUser = response.data;
-  res.json(newUser);
+  const allUsers = await getAllUsers();
+  const results = validationResult(req);
+  if (checkUsernameNotInUse(allUsers,username)) {
+    
+  }
+  if (!results.isEmpty()) {
+    return res.json({ errors: results.array() });
+  }
+  const newUser = await addUser(
+    { username, email, password, profileImg: req.file.filename },
+    saltRound
+  );
+  res.json(req.file);
 };
 
 exports.authUser = (req, res) => {
