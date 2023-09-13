@@ -14,10 +14,18 @@ exports.usernameValidator = () =>
     .notEmpty()
     .withMessage("Username cannot be empty");
 
-exports.checkUsernameNotInUse = async (users, requestedUser) => {
-  const user = await users.find((user) => user.username === requestedUser);
+exports.checkUsernameNotInUse = (users, requestedUser, results) => {
+  const user = users.find(
+    (user) => user.username.trim() === requestedUser.trim()
+  );
   if (user) {
-    throw new Error("This username already Exists");
+    results.errors.push({
+      value: "", // Provide the value causing the error
+      msg: "This username already Exists",
+      param: "username", // Replace with the actual field name
+      location: "body",
+    });
+    console.log(true);
   }
 };
 exports.pwdValidator = () =>
@@ -31,10 +39,15 @@ exports.pwdValidator = () =>
       "Password must contain at least one uppercase letter, one number, and one special character"
     );
 
-exports.profileImgValidator = async (image) => {
+exports.profileImgValidator = async (image, results) => {
   const imgMimeType = image.mimetype.startsWith("image/");
   if (!imgMimeType) {
-    throw new Error("File must be an image.");
+    results.errors.push({
+      value: "", // Provide the value causing the error
+      msg: "File must be an image.",
+      param: "profileImg", // Replace with the actual field name
+      location: "body",
+    });
   }
 };
 

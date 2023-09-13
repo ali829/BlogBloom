@@ -2,18 +2,11 @@
   "posts": [],
   "users": [
     {
-      "username": "dadadad@gmail.com",
-      "email": "sasasa@gmail.com",
-      "password": "$2a$10$CLbZ3iKqv91BzS.lBNv9l.a440ng0D21v5hzD7qiy6TV3bNhsWf5W",
-      "profileImg": "1694558986066-206817966-Screenshot (6).png",
-      "id": "3ee58337-46e9-462e-9df9-53cd3945f52e"
-    },
-    {
-      "username": "dadadad@gmail.com",
-      "email": "",
-      "password": "$2a$10$hQ2fjYkqgWumnE9q6JE2cu4fHgRa/n6CtX8Oj0nHdQ4i9L/QsGMa2",
-      "profileImg": "1694560246580-188851979-Screenshot (6).png",
-      "id": "eccdfa68-31b1-47d7-82f1-bed22ad55dcc"
+      "username": "ali123",
+      "email": "ali@gmail.com",
+      "password": "$2a$10$jOQ7A3.M0nP0TXQI9/gR6ui6qwtpGwjsMcLcxsaLa4g1n1tfKHwjG",
+      "profileImg": "1694565012915-787740593-Screenshot (3).png",
+      "id": "253fa7c7-00c0-418d-a9f5-9faec26179ef"
     }
   ]
 }

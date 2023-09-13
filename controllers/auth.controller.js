@@ -17,9 +17,8 @@ exports.createUser = async (req, res) => {
   const { username, email, password, profileImg } = req.body;
   const allUsers = await getAllUsers();
   const results = validationResult(req);
-  if (checkUsernameNotInUse(allUsers,username)) {
-    
-  }
+  checkUsernameNotInUse(allUsers, username, results);
+  profileImgValidator(req.file, results);
   if (!results.isEmpty()) {
     return res.json({ errors: results.array() });
   }
@@ -27,7 +26,7 @@ exports.createUser = async (req, res) => {
     { username, email, password, profileImg: req.file.filename },
     saltRound
   );
-  res.json(req.file);
+  res.json(newUser);
 };
 
 exports.authUser = (req, res) => {
