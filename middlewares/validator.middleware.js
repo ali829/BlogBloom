@@ -1,5 +1,7 @@
 const { body, validationResult } = require("express-validator");
+const { decodePassword } = require("../utils/auth.util");
 
+// register validations
 exports.emailValidator = () =>
   body("email")
     .isEmail()
@@ -28,6 +30,7 @@ exports.checkUsernameNotInUse = (users, requestedUser, results) => {
     console.log(true);
   }
 };
+
 exports.pwdValidator = () =>
   body("password")
     .notEmpty()
@@ -49,6 +52,32 @@ exports.profileImgValidator = async (image, results) => {
       location: "body",
     });
   }
+};
+
+// login validations
+exports.checkCredentialsIsExists = (requestedUser, allUsers, results) => {
+  const user = allUsers.find((user) => {
+    return requestedUser.email === user.email;
+  });
+  if (!user) {
+    return results.errors.push({
+      value: "", // Provide the value causing the error
+      msg: "email is not valid!",
+      param: "email", // Replace with the actual field name
+      location: "body",
+    });
+  }
+
+  const pwdIsValid = decodePassword(requestedUser.password, user.password);
+  if (!pwdIsValid) {
+    return results.errors.push({
+      value: "", // Provide the value causing the error
+      msg: "Password is not valid!",
+      param: "password", // Replace with the actual field name
+      location: "body",
+    });
+  }
+  return user.id;
 };
 
 exports.validationResult = (req) => validationResult(req);

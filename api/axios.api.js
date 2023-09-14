@@ -11,8 +11,12 @@ class axiosApi {
   async addOne(data) {
     return this.api.post("/", data);
   }
-  async getAll(data) {
+  async getAll() {
     return this.api.get("/");
+  }
+
+  async getOne(id) {
+    return this.api.get("/", id);
   }
 }
 

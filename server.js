@@ -1,5 +1,6 @@
 const express = require("express");
 const authRouter = require("./routes/auth.routes");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
@@ -8,6 +9,8 @@ const { PORT } = require("./configs/config");
 app.use(express.json());
 // formData parser
 app.use(express.urlencoded({ extended: true }));
+// use cookie parser
+app.use(cookieParser());
 // serve static folder
 app.use(express.static("public"));
 // setup view engine

@@ -11,6 +11,7 @@ const {
   getRegister,
   createUser,
   authUser,
+  logoutUser,
 } = require("../controllers/auth.controller");
 
 router.get("/register", getRegister);
@@ -26,5 +27,6 @@ router.post(
   createUser
 );
 router.post("/login", authUser);
+router.post("/logout", logoutUser);
 
 module.exports = router;
