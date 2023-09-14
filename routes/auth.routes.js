@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const { ensureAuthenticated } = require("../middlewares/auth.middleware");
 const { upload } = require("../middlewares/media.middleware");
 const {
   emailValidator,
@@ -14,8 +15,8 @@ const {
   logoutUser,
 } = require("../controllers/auth.controller");
 
-router.get("/register", getRegister);
-router.get("/login", getLogin);
+router.get("/register", ensureAuthenticated, getRegister);
+router.get("/login", ensureAuthenticated, getLogin);
 router.post(
   "/register",
   [

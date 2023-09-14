@@ -10,8 +10,6 @@ const {
   checkCredentialsIsExists,
 } = require("../middlewares/validator.middleware");
 
-const { json } = require("express");
-const { cookie } = require("express-validator");
 const saltRound = 10;
 
 //TODO:replace this to auth.util

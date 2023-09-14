@@ -28,3 +28,8 @@ exports.getOneUserByEmail = async (email) => {
   const userByEmail = allUsers.find((user) => email === user.email);
   return userByEmail;
 };
+
+exports.getOneByID = async (id) => {
+  const response = await api.getOne(id);
+  return response.data[0];
+};
