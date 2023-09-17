@@ -14,7 +14,7 @@ exports.authCheck = (req, res, next) => {
       }
     });
   } else {
-    if (req.method == "PUT") {
+    if (req.method == "PATCH") {
       return res
         .status(401)
         .json({ message: "Unauthorized", code: res.statusCode });
@@ -69,19 +69,19 @@ exports.permissionToAction = async (req, res, next) => {
       console.log("allowed to edit or delete");
       next();
     } else {
-      if (req.method == "PUT") {
+      if (req.method == "PATCH") {
         return res
           .status(401)
           .json({ message: "Unauthorized", code: res.statusCode });
       }
-      res.redirect("home");
+      res.redirect("/");
     }
   } else {
-    if (req.method == "PUT") {
+    if (req.method == "PATCH") {
       return res
         .status(404)
         .json({ message: "Not found", code: res.statusCode });
     }
-    res.redirect("404");
+    res.render("404");
   }
 };

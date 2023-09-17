@@ -20,6 +20,7 @@ const {
   getBlogs,
   getSingleBlog,
   editBlog,
+  getEditBlog,
 } = require("../controllers/blogs.controller");
 
 const validationList = [titleValidator(), slugValidator(), contentValidator()];
@@ -31,11 +32,13 @@ router.post(
   [authCheck, upload.single("blogImg"), ...validationList],
   postBlog
 );
-router.put(
+router.get("/blog/edit/:id", [authCheck, permissionToAction], getEditBlog);
+router.patch(
   "/blog/edit/:id",
-  [authCheck, permissionToAction, upload.single("blogImg")],
+  [authCheck, permissionToAction, upload.single("blogImg"), ...validationList],
   editBlog
 );
+
 router.delete("/blog/:id");
 router.get("/blog/:id", getSingleBlog);
 

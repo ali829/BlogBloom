@@ -23,3 +23,9 @@ exports.getOneBlog = async (id) => {
   const blogById = allBlogs.find((blog) => blog.id === id);
   return blogById;
 };
+
+exports.editBlogById = async (blog, blogId) => {
+  const response = await api.editOne(blog, blogId);
+  const editedBlog = await response.data;
+  return editedBlog;
+};

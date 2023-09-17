@@ -1,22 +1,13 @@
 {
   "posts": [
     {
-      "title": "wach akhunaaaa",
-      "slug": "daad sasassassasass sasasas",
-      "content": "azqsqswxqa",
-      "blogImg": "1694975643489-139094134-Screenshot (5).png",
+      "title": "chi hajja 1",
+      "slug": "chi hajja lekher slug",
+      "content": "conteent jdiiiiiiiiiiiiiiiiiiiiiiiiiiiiiid ya akhi",
+      "blogImg": "1694987343694-807260207-Screenshot (6).png",
       "author": "f9ed1b4d-8279-4878-b5ed-304eb3a2cfc2",
       "views": 0,
       "id": "96f91018-f888-43aa-b7ba-3e1e9f5aa6e7"
-    },
-    {
-      "title": "post akhur",
-      "slug": "daad alo alo alo sasasas",
-      "content": "azqsqswxqa",
-      "blogImg": "1694975672259-217754396-Screenshot (7).png",
-      "author": "1",
-      "views": 0,
-      "id": "eb4657fe-5211-403b-90dd-e67ff6d290f"
     }
   ],
   "users": [

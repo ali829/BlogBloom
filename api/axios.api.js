@@ -18,6 +18,9 @@ class axiosApi {
   async getOne(id) {
     return this.api.get("/", id);
   }
+  async editOne(data, id) {
+    return this.api.patch(`/${id}`, data);
+  }
 }
 
 module.exports = axiosApi;

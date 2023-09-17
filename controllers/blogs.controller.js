@@ -9,6 +9,7 @@ const {
   getBlogsByUserId,
   getAllBlogs,
   getOneBlog,
+  editBlogById,
 } = require("../services/blog.service");
 const { v4: uuidV4 } = require("uuid");
 
@@ -61,7 +62,32 @@ exports.getSingleBlog = async (req, res) => {
   res.render("404");
 };
 
-exports.editBlog = (req, res) => {
+exports.editBlog = async (req, res) => {
   const { title, slug, content } = req.body;
-  res.json({ title, slug, content });
+  const results = validationResult(req);
+  profileImgValidator(req.file, results);
+  blogImgValidator(req.file, results);
+  if (!results.isEmpty()) {
+    return res.json({ errors: results.array() });
+  }
+  const blogImg = null || req.file.filename;
+  const newBlog = await editBlogById(
+    {
+      title,
+      slug,
+      content,
+      blogImg,
+    },
+    req.params.id
+  );
+  res.json({ title, slug, content, blogImg });
+};
+
+exports.getEditBlog = async (req, res) => {
+  const blog = await getOneBlog(req.params.id);
+  const data = {
+    title: blog.title,
+    blog,
+  };
+  res.render("editBlog", data);
 };
