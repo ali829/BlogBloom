@@ -4,7 +4,12 @@ const {
   profileImgValidator,
 } = require("../middlewares/validator.middleware");
 
-const { addBlog } = require("../services/blog.service");
+const {
+  addBlog,
+  getBlogsByUserId,
+  getAllBlogs,
+  getOneBlog,
+} = require("../services/blog.service");
 const { v4: uuidV4 } = require("uuid");
 
 exports.postBlog = async (req, res) => {
@@ -18,13 +23,40 @@ exports.postBlog = async (req, res) => {
   const blogImg = null || req.file.filename;
   const { user } = res.locals;
   const newBlog = await addBlog({
-    id: uuidV4(),
     title,
     slug,
     content,
     blogImg,
     author: user.id,
     views: 0,
+    id: uuidV4(),
   });
   res.json(newBlog);
+};
+
+exports.getOwnBlogs = async (req, res) => {
+  const { user } = res.locals;
+  const myOwnBlogs = await getBlogsByUserId(user.id);
+  res.json(myOwnBlogs);
+};
+
+exports.getBlogs = async (req, res) => {
+  const blogs = await getAllBlogs();
+  const data = {
+    blogs,
+    title: "Home page",
+  };
+  res.render("home", data);
+};
+
+exports.getSingleBlog = async (req, res) => {
+  const blog = await getOneBlog(req.params.id);
+  if (blog) {
+    const data = {
+      blog,
+      title: blog.title,
+    };
+    return res.render("singlePost", data);
+  }
+  res.render("404");
 };

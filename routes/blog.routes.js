@@ -11,18 +11,24 @@ const {
   blogImgValidator,
 } = require("../middlewares/validator.middleware");
 
-const { postBlog } = require("../controllers/blogs.controller");
+const {
+  postBlog,
+  getOwnBlogs,
+  getBlogs,
+  getSingleBlog,
+} = require("../controllers/blogs.controller");
 
 const validationList = [titleValidator(), slugValidator(), contentValidator()];
 
-router.get("/");
-router.get("/blogs");
+router.get("/", getBlogs);
+router.get("/blogs", [authCheck], getOwnBlogs);
 router.post(
   "/blog/add",
   [authCheck, upload.single("blogImg"), ...validationList],
   postBlog
-);
-router.put("/blog/edit/:id");
-router.delete("/blog/:id");
+  );
+  router.put("/blog/edit/:id", [authCheck]);
+  router.delete("/blog/:id");
+  router.get("/blog/:id", getSingleBlog);
 
 module.exports = router;

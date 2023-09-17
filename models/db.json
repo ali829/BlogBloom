@@ -1,13 +1,22 @@
 {
   "posts": [
     {
-      "id": "d593f585-4e95-4b05-84b4-34a0479b15f8",
-      "title": "chii hajja laaaakher",
-      "slug": "daad sasassas sasasas",
+      "title": "wach akhunaaaa",
+      "slug": "daad sasassassasass sasasas",
       "content": "azqsqswxqa",
-      "blogImg": "1694921904872-870280016-Screenshot (5).png",
+      "blogImg": "1694975643489-139094134-Screenshot (5).png",
       "author": "f9ed1b4d-8279-4878-b5ed-304eb3a2cfc2",
-      "views": 0
+      "views": 0,
+      "id": "96f91018-f888-43aa-b7ba-3e1e9f5aa6e7"
+    },
+    {
+      "title": "post akhur",
+      "slug": "daad alo alo alo sasasas",
+      "content": "azqsqswxqa",
+      "blogImg": "1694975672259-217754396-Screenshot (7).png",
+      "author": "f9ed1b4d-8279-4878-b5ed-304eb3a2cfc2",
+      "views": 0,
+      "id": "eb4657fe-5211-403b-90dd-e67ff6d290f3"
     }
   ],
   "users": [

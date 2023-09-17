@@ -6,3 +6,20 @@ exports.addBlog = async (blog) => {
   const newBlog = await api.addOne(blog);
   return newBlog.data;
 };
+
+exports.getAllBlogs = async () => {
+  const response = await api.getAll();
+  const allBlogs = await response.data;
+  return allBlogs;
+};
+exports.getBlogsByUserId = async (userId) => {
+  const allBlogs = await this.getAllBlogs();
+  const blogUser = allBlogs.filter((blog) => blog.author === userId);
+  return blogUser;
+};
+
+exports.getOneBlog = async (id) => {
+  const allBlogs = await this.getAllBlogs();
+  const blogById = allBlogs.find((blog) => blog.id === id);
+  return blogById;
+};
