@@ -1,12 +1,22 @@
 {
-  "posts": [],
+  "posts": [
+    {
+      "id": "d593f585-4e95-4b05-84b4-34a0479b15f8",
+      "title": "chii hajja laaaakher",
+      "slug": "daad sasassas sasasas",
+      "content": "azqsqswxqa",
+      "blogImg": "1694921904872-870280016-Screenshot (5).png",
+      "author": "f9ed1b4d-8279-4878-b5ed-304eb3a2cfc2",
+      "views": 0
+    }
+  ],
   "users": [
     {
       "username": "ali123",
       "email": "aliyali@gmail.com",
-      "password": "$2a$10$7viX/mlUSv1stTJj/28tC.Ok898xwLEuWS4xlTm2rhqKaQGz/v.Ye",
-      "profileImg": "1694715854679-527011836-Screenshot (7).png",
-      "id": "c18f85aa-e2a7-4bf1-84ae-757525c7bd3e"
+      "password": "$2a$10$1IgXMnefCruHOR.5K.rmuuWQ9R6rphD.33J1nnW6DCoepRzULvu8e",
+      "profileImg": "1694921892560-316208489-Screenshot (7).png",
+      "id": "f9ed1b4d-8279-4878-b5ed-304eb3a2cfc2"
     }
   ]
 }

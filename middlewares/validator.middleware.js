@@ -43,14 +43,16 @@ exports.pwdValidator = () =>
     );
 
 exports.profileImgValidator = async (image, results) => {
-  const imgMimeType = image.mimetype.startsWith("image/");
-  if (!imgMimeType) {
-    results.errors.push({
-      value: "", // Provide the value causing the error
-      msg: "File must be an image.",
-      param: "profileImg", // Replace with the actual field name
-      location: "body",
-    });
+  if (image) {
+    const imgMimeType = image.mimetype.startsWith("image/");
+    if (!imgMimeType) {
+      results.errors.push({
+        value: "", // Provide the value causing the error
+        msg: "File must be an image.",
+        param: "profileImg", // Replace with the actual field name
+        location: "body",
+      });
+    }
   }
 };
 
@@ -78,6 +80,40 @@ exports.checkCredentialsIsExists = (requestedUser, allUsers, results) => {
     });
   }
   return user.id;
+};
+
+// blogs validator
+
+exports.titleValidator = () =>
+  body("title")
+    .notEmpty()
+    .withMessage("title cannot be empty")
+    .isLength({ min: 10, max: 20 })
+    .withMessage("Title must be between 10 and 20 characters");
+
+exports.slugValidator = () =>
+  body("slug")
+    .notEmpty()
+    .withMessage("Slug cannot be empty")
+    .isLength({ min: 10, max: 30 })
+    .withMessage("Slug must be between 10 and 30 characters");
+
+exports.contentValidator = () =>
+  body("content")
+    .notEmpty()
+    .withMessage("Content cannot be empty")
+    .isLength({ min: 10 })
+    .withMessage("Content must be more than 10 characters");
+
+exports.blogImgValidator = (image, results) => {
+  if (!image) {
+    return results.errors.push({
+      value: "", // Provide the value causing the error
+      msg: "Please upload image for your blog post.",
+      param: "blogImg", // Replace with the actual field name
+      location: "body",
+    });
+  }
 };
 
 exports.validationResult = (req) => validationResult(req);

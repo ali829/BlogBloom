@@ -1,7 +1,10 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
+
+// routes
 const authRouter = require("./routes/auth.routes");
 const dashboardRouter = require("./routes/dashboard.routes");
-const cookieParser = require("cookie-parser");
+const blogsRouter = require("./routes/blog.routes");
 
 // custom middlewares
 const { checkUser } = require("./middlewares/auth.middleware");
@@ -22,6 +25,7 @@ app.set("view engine", "ejs");
 
 // routers middleware
 app.use("*", checkUser); //Apply checkUser if logged in middleware
+app.use(blogsRouter);
 app.use(authRouter);
 app.use(dashboardRouter);
 app.use(function errorHandler(err, req, res, next) {
