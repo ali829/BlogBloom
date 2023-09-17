@@ -60,3 +60,8 @@ exports.getSingleBlog = async (req, res) => {
   }
   res.render("404");
 };
+
+exports.editBlog = (req, res) => {
+  const { title, slug, content } = req.body;
+  res.json({ title, slug, content });
+};

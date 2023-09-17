@@ -67,5 +67,3 @@ exports.logoutUser = (req, res) => {
   res.redirect("/login");
 };
 
-// check that the user have the access to edit or delete a blog post
-

@@ -2,7 +2,10 @@ const { Router } = require("express");
 const router = Router();
 
 // middlewares
-const { authCheck } = require("../middlewares/auth.middleware");
+const {
+  authCheck,
+  permissionToAction,
+} = require("../middlewares/auth.middleware");
 const { upload } = require("../middlewares/media.middleware");
 const {
   titleValidator,
@@ -16,6 +19,7 @@ const {
   getOwnBlogs,
   getBlogs,
   getSingleBlog,
+  editBlog,
 } = require("../controllers/blogs.controller");
 
 const validationList = [titleValidator(), slugValidator(), contentValidator()];
@@ -26,9 +30,13 @@ router.post(
   "/blog/add",
   [authCheck, upload.single("blogImg"), ...validationList],
   postBlog
-  );
-  router.put("/blog/edit/:id", [authCheck]);
-  router.delete("/blog/:id");
-  router.get("/blog/:id", getSingleBlog);
+);
+router.put(
+  "/blog/edit/:id",
+  [authCheck, permissionToAction, upload.single("blogImg")],
+  editBlog
+);
+router.delete("/blog/:id");
+router.get("/blog/:id", getSingleBlog);
 
 module.exports = router;
