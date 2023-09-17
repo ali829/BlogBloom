@@ -21,6 +21,7 @@ const {
   getSingleBlog,
   editBlog,
   getEditBlog,
+  deleteBlog,
 } = require("../controllers/blogs.controller");
 
 const validationList = [titleValidator(), slugValidator(), contentValidator()];
@@ -39,7 +40,7 @@ router.patch(
   editBlog
 );
 
-router.delete("/blog/:id");
+router.delete("/blog/delete/:id", [authCheck, permissionToAction], deleteBlog);
 router.get("/blog/:id", getSingleBlog);
 
 module.exports = router;

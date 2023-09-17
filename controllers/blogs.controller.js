@@ -10,6 +10,7 @@ const {
   getAllBlogs,
   getOneBlog,
   editBlogById,
+  deleteBlogById,
 } = require("../services/blog.service");
 const { v4: uuidV4 } = require("uuid");
 
@@ -90,4 +91,9 @@ exports.getEditBlog = async (req, res) => {
     blog,
   };
   res.render("editBlog", data);
+};
+
+exports.deleteBlog = async (req, res) => {
+  const deletedBlog = await deleteBlogById(req.params.id);
+  res.json({ deletedBlog }); 
 };

@@ -29,3 +29,9 @@ exports.editBlogById = async (blog, blogId) => {
   const editedBlog = await response.data;
   return editedBlog;
 };
+
+exports.deleteBlogById = async (blogId) => {
+  const response = await api.deleteOne(blogId);
+  const deletedBlog = response.data;
+  return deletedBlog;
+};

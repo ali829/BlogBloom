@@ -14,7 +14,7 @@ exports.authCheck = (req, res, next) => {
       }
     });
   } else {
-    if (req.method == "PATCH") {
+    if (req.method == "PATCH" || req.method === "DELETE") {
       return res
         .status(401)
         .json({ message: "Unauthorized", code: res.statusCode });
@@ -69,7 +69,7 @@ exports.permissionToAction = async (req, res, next) => {
       console.log("allowed to edit or delete");
       next();
     } else {
-      if (req.method == "PATCH") {
+      if (req.method == "PATCH" || req.method == "DELETE") {
         return res
           .status(401)
           .json({ message: "Unauthorized", code: res.statusCode });
@@ -77,7 +77,7 @@ exports.permissionToAction = async (req, res, next) => {
       res.redirect("/");
     }
   } else {
-    if (req.method == "PATCH") {
+    if (req.method == "PATCH" || req.method == "DELETE") {
       return res
         .status(404)
         .json({ message: "Not found", code: res.statusCode });

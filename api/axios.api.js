@@ -21,6 +21,9 @@ class axiosApi {
   async editOne(data, id) {
     return this.api.patch(`/${id}`, data);
   }
+  async deleteOne(id) {
+    return this.api.delete(`/${id}`);
+  }
 }
 
 module.exports = axiosApi;
