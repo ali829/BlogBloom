@@ -1,36 +1,7 @@
 {
   "posts": [
-    {
-      "title": "chi hajja 1",
-      "slug": "chi hajja lekher slug",
-      "content": "conteent jdiiiiiiiiiiiiiiiiiiiiiiiiiiiiiid ya akhi",
-      "blogImg": "1694987343694-807260207-Screenshot (6).png",
-      "author": "f9ed1b4d-8279-4878-b5ed-304eb3a2cfc2",
-      "views": 0,
-      "id": "96f91018-f888-43aa-b7ba-3e1e9f5aa6e7"
-    }
+
   ],
   "users": [
-    {
-      "username": "ali123",
-      "email": "aliyali@gmail.com",
-      "password": "$2a$10$1IgXMnefCruHOR.5K.rmuuWQ9R6rphD.33J1nnW6DCoepRzULvu8e",
-      "profileImg": "1694921892560-316208489-Screenshot (7).png",
-      "id": "f9ed1b4d-8279-4878-b5ed-304eb3a2cfc2"
-    },
-    {
-      "username": "ali302",
-      "email": "ali301@gmail.com",
-      "password": "$2a$10$VUpN0OG2z/Hglgg8wOkfg.hFs.JCWi/LyuxfFpjzFGLFGs/ehhL6S",
-      "profileImg": "1695065370811-192925881-Screenshot (1).png",
-      "id": "790c708c-520d-48d0-85a2-285d89eaad53"
-    },
-    {
-      "username": "osamma",
-      "email": "osamma@gmail.com",
-      "password": "$2a$10$RdWeQFVgYWiQzmalKysGfe8vmpB52oyh5qXy8noGBXDIX45O66T4G",
-      "profileImg": "1695002793825-874335438-Screenshot (2).png",
-      "id": "4ff09a6c-15e7-41da-812e-384407db274c"
-    }
   ]
 }
