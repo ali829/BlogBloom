@@ -24,6 +24,9 @@ class axiosApi {
   async deleteOne(id) {
     return this.api.delete(`/${id}`);
   }
+  async getOneById(id) {
+    return this.api.get(`/${id}`);
+  }
 }
 
 module.exports = axiosApi;

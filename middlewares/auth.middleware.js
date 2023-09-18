@@ -85,3 +85,25 @@ exports.permissionToAction = async (req, res, next) => {
     res.render("404");
   }
 };
+
+// check access  to edit user
+const axiosApi = require("../api/axios.api.js");
+const api = new axiosApi("users");
+exports.permissionToEditProfile = async (req, res, next) => {
+  const { user } = res.locals;
+  const requestedProfileId = req.params.id;
+  try {
+    const response = await api.getOneById(requestedProfileId);
+    const userFromDb = await response.data;
+    if (user.id === userFromDb.id) {
+      return res.json({
+        message: "you can not access to this route",
+        code: res.statusCode,
+      });
+    } else {
+      next();
+    }
+  } catch (err) {
+    res.json({ message: err.message, code: res.statusCode });
+  }
+};

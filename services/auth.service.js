@@ -33,3 +33,8 @@ exports.getOneByID = async (id) => {
   const response = await api.getOne(id);
   return response.data[0];
 };
+
+exports.editUserById = async (user, userId) => {
+  const response = await api.editOne(user, userId);
+  return response.data;
+};
