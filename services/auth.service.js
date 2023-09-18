@@ -26,7 +26,7 @@ exports.getAllUsers = async () => {
 exports.getOneUserByEmail = async (email) => {
   const allUsers = await this.getAllUsers();
   const userByEmail = allUsers.find((user) => email === user.email);
-  return userByEmail;
+  return userByEmail.id;
 };
 
 exports.getOneByID = async (id) => {

@@ -22,8 +22,9 @@ exports.authCheck = (req, res, next) => {
     res.redirect("/login");
   }
 };
-
-exports.checkUser = (req, res, next) => {
+const axiosApi = require("../api/axios.api.js");
+const api = new axiosApi("users");
+exports.checkUser = async (req, res, next) => {
   const token = req.cookies.jwt;
   if (token) {
     jwt.verify(token, process.env.SECRET_ACCESS_TOKEN, async (err, decoded) => {
@@ -31,7 +32,9 @@ exports.checkUser = (req, res, next) => {
         res.locals.user = null;
         next();
       } else {
-        const user = await getOneByID(decoded.id);
+        const response = await api.getOneById(decoded.id);
+        const user = await response.data;
+        // const user = await getOneByID(decoded.id);
         res.locals.user = user;
         next();
       }
@@ -87,15 +90,13 @@ exports.permissionToAction = async (req, res, next) => {
 };
 
 // check access  to edit user
-const axiosApi = require("../api/axios.api.js");
-const api = new axiosApi("users");
 exports.permissionToEditProfile = async (req, res, next) => {
   const { user } = res.locals;
   const requestedProfileId = req.params.id;
   try {
     const response = await api.getOneById(requestedProfileId);
     const userFromDb = await response.data;
-    if (user.id === userFromDb.id) {
+    if (user.id !== userFromDb.id) {
       return res.json({
         message: "you can not access to this route",
         code: res.statusCode,

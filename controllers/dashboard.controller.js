@@ -10,14 +10,15 @@ exports.getDashboard = (req, res) => {
 };
 
 exports.getProfileUser = (req, res) => {
-  res.render("profile");
+  const { user } = res.locals;
+  res.render("profile", user);
 };
 exports.editUser = async (req, res) => {
   const { username, email } = req.body;
   const allUsers = await getAllUsers();
   const results = validationResult(req);
-  const authenticatedUser = res.locals.user;
-  if (authenticatedUser.username === username) {
+  const { user } = res.locals;
+  if (user.username !== username) {
     checkUsernameNotInUse(allUsers, username, results);
   }
   profileImgValidator(req.file, results);
@@ -28,5 +29,5 @@ exports.editUser = async (req, res) => {
     { username, email, profileImg: req.file.filename },
     req.params.id
   );
-  res.json("updated successfully");
+  res.json(userEdited);
 };

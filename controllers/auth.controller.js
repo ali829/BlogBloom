@@ -58,7 +58,7 @@ exports.authUser = async (req, res) => {
   const id = await getOneUserByEmail(email);
   const token = createToken(id);
   res.cookie("jwt", token, { maxAge: MAX_AGE });
-  res.json({ token });
+  res.json({ token, id });
 };
 
 // logout
@@ -66,4 +66,3 @@ exports.logoutUser = (req, res) => {
   res.cookie("jwt", "", { maxAge: 0 });
   res.redirect("/login");
 };
-
